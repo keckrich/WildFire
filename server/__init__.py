@@ -1,13 +1,16 @@
 import os
 from flask import Flask, abort, session, request, redirect, render_template
 from flask.json import jsonify
+from random import randint
 
 app = Flask(__name__, template_folder="../public", static_folder="../public", static_url_path='')
 
 from server.routes import *
 from server.services import *
 
-name = ["Kyle","Ryan", "Eric"]
+name = []
+for i in range(100):
+	name.append([randint(-90,90), randint(-180,180), "250"])
 
 @app.route('/test')
 def test():

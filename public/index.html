@@ -88,6 +88,18 @@ request.onload = function() {
   // Begin accessing JSON data here
   var data = JSON.parse(this.response)
   console.log(data)
+  
+  
+  var addressPoints2 = data
+//var heat = L.heatLayer(addressPoints2).addTo(map);
+var heat = L.heatLayer(addressPoints2, {radius: 25}).addTo(map);
+      var i;
+      for(i = 0; i < addressPoints2.length; i++)
+          {
+            L.marker(addressPoints2[i].slice(0,2))
+                .addTo(map)
+                .bindPopup('1')
+          }
     
 }
 
@@ -106,19 +118,7 @@ var ratIcon = L.icon({
     });  
 L.marker([38.8894207167, -119.4015351167],{icon: ratIcon}).addTo(map)
       
-var addressPoints2 = [
-[37.8839, -120.3745188667, "1000"],
-[38.8869090667, -120.3657417333, "200"],
-[37.8894207167, -119.4015351167, "300"]]
-var heat = L.heatLayer(addressPoints2).addTo(map);
-var heat = L.heatLayer(addressPoints2, {radius: 25}).addTo(map);
-      var i;
-      for(i = 0; i < addressPoints2.length; i++)
-          {
-            L.marker(addressPoints2[i].slice(0,2))
-                .addTo(map)
-                .bindPopup('1')
-          }
+
   </script>
 </body>
 </html>

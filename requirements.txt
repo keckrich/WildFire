@@ -4,3 +4,4 @@ prometheus-client
 ibmcloudenv
 livereload
 pyodbc
+pandas

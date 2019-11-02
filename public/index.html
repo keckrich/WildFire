@@ -1,10 +1,11 @@
 <html>
 <head>
   <title>Wild Fire</title>
+   
   <link rel="stylesheet" href="./Leaflet-1.0.3/leaflet.css"/>
   <script src="./Leaflet-1.0.3/leaflet.js"></script>
   <script src="./Leaflet.heat-gh-pages/dist/leaflet-heat.js"></script> 
-  
+   <img src= "logo2.png" width="200" height="81">
   <style>
     #aerismap{ 
         height: 800px;
@@ -64,7 +65,7 @@ div.fixed {
     
     
 </head>
-<body>
+<body bgcolor = "#449abd">
 <div class="fixed">
 <b>Data Manipulation</b>
     <p><center>Specific year data (2000-2019)</center></p>
@@ -112,11 +113,11 @@ request.send()
     attribution: '&copy; OpenStreetMap contributors'
 }).addTo(map);
       
-var ratIcon = L.icon({
-      iconUrl: '...',
-      iconSize: [60,50]
+var stationIcon = L.icon({
+      iconUrl: 'fire.png',
+      iconSize: [30,30]
     });  
-L.marker([38.8894207167, -119.4015351167],{icon: ratIcon}).addTo(map)
+L.marker([38.8894207167, -119.4015351167],{icon: stationIcon}).addTo(map)
       
 
   </script>

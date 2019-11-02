@@ -23,10 +23,9 @@ def test():
 @app.route('/api')
 def api():
     print (os.getcwd())
-    csv = pd.read_csv("server\ile.csv")
+    csv = pd.read_csv("server/predict_subset.csv")
     new = csv[["latitude", "longitude", "PREDICTED"]]
     newlist = new.values.tolist()
-   # print (newlist)
     return jsonify(newlist)
 
 

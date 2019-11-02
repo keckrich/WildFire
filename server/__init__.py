@@ -22,8 +22,12 @@ def test():
 
 @app.route('/api')
 def api():
-	print (os.getcwd())
-	return (jsonify(os.getcwd()))
+    print (os.getcwd())
+    csv = pd.read_csv("server/ile.csv")
+    new = csv[["latitude", "longitude", "PREDICTED"]]
+    newlist = new.values.tolist()
+    return jsonify(newlist)
+
 
 @app.route('/getpythondata')
 def gpd():
@@ -37,3 +41,4 @@ if 'FLASK_LIVE_RELOAD' in os.environ and os.environ['FLASK_LIVE_RELOAD'] == 'tru
     server = livereload.Server(app.wsgi_app)
     server.serve(port=os.environ['port'], host=os.environ['host'])
 
+			

@@ -7,9 +7,15 @@ app = Flask(__name__, template_folder="../public", static_folder="../public", st
 from server.routes import *
 from server.services import *
 
+name = ["Kyle","Ryan", "Eric"]
+
 @app.route('/test')
 def test():
-    return render_template('test.html')
+    return render_template('test.html', name=name)
+	
+@app.route('/api')
+def api():
+	return jsonify(name)
 
 initServices(app)
 

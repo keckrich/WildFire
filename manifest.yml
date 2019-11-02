@@ -5,7 +5,7 @@ applications:
   name: WildFire
   buildpack: python_buildpack
   command: python manage.py run 0.0.0.0:$PORT
-  memory: 128MB
+  memory: 256MB
   domain: mybluemix.net
   host: wildfire-cd12
   env:

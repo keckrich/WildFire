@@ -7,6 +7,10 @@ app = Flask(__name__, template_folder="../public", static_folder="../public", st
 from server.routes import *
 from server.services import *
 
+@app.route('/test')
+def test():
+    return render_template('test.html')
+
 initServices(app)
 
 if 'FLASK_LIVE_RELOAD' in os.environ and os.environ['FLASK_LIVE_RELOAD'] == 'true':

@@ -14,11 +14,15 @@ for i in range(100):
 
 @app.route('/test')
 def test():
-    return render_template('test.html', name=name)
+    return render_template('test.html', name="KYle")
 	
 @app.route('/api')
 def api():
 	return jsonify(name)
+	
+@app.route('/getpythondata')
+def gpd():
+	return jsonify("test")
 
 initServices(app)
 

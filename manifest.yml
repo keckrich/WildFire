@@ -4,9 +4,9 @@ applications:
   timeout: 180
   name: WildFireFlask
   buildpack: python_buildpack
-  command: python manage.py start 0.0.0.0:$PORT
+  command: python manage.py run 0.0.0.0:$PORT
   memory: 256MB
-  domain: apps.internal
+  domain: mybluemix.net
   host: wildfire
   env:
     FLASK_APP : server

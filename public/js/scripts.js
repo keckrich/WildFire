@@ -2,7 +2,7 @@ var request = new XMLHttpRequest()
 
 
 
-request.open('GET', '/api', true)
+request.open('GET', 'https://wildfire-cd12.mybluemix.net/api', true)
 request.onload = function() {
 	
 

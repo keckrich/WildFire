@@ -26,7 +26,7 @@ def api():
     csv = pd.read_csv("server\ile.csv")
     new = csv[["latitude", "longitude", "PREDICTED"]]
     newlist = new.values.tolist()
-    print (newlist)
+   # print (newlist)
     return jsonify(newlist)
 
 

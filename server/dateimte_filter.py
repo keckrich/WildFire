@@ -2,26 +2,30 @@ import pandas as pd
 import time
 import datetime
 
-csv = pd.read_csv("predict_subset.csv")
 
-csv['acq_date'] = pd.to_datetime(csv['acq_date'])
+def get_data(startmonth, endmonth, startyear, endyear, confidence):
+    csv = pd.read_csv("predict_subset.csv")
 
-print(len(csv))
+    csv['acq_date'] = pd.to_datetime(csv['acq_date'])
 
-startmonth = 1
-startday = 1
-startyear = 2017
+    if endmonth == 2:
+        dai = 28
+    elif endmonth == 4 or endmonth == 6 or endmonth == 9 or endmonth == 11:
+        dai = 30
+    else:
+        dai = 31
+    startdate = datetime.datetime(year=startyear, month=startmonth, day=1)
+    enddate = datetime.datetime(year=endyear, month=endmonth, day=dai)
 
-startdate = datetime.datetime(year=startyear, month=startmonth, day=startday)
+    new = csv[ (csv['acq_date'] >= startdate) & (csv['acq_date'] <= enddate) ]
+    new = new.drop("acq_date", 1)
 
-endmonth = 2
-endday = 2
-endyear = 2017
+    new = new[ new["PREDICTED"] >= confidence ]
 
-enddate = datetime.datetime(year=endyear, month=endmonth, day=endday)
+    new = new.values.tolist()
 
-new = csv[ (csv['acq_date'] >= startdate) & (csv['acq_date'] <= enddate) ]
+    return new
 
-new = new.values.tolist()
 
-print("success")
+asdf = get_data(1, 1, 2017, 2017, 30)
+print(asdf)

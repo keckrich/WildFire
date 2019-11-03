@@ -1,84 +1,249 @@
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by TEMPLATED
+http://templated.co
+Released for free under the Creative Commons Attribution License
+
+Name       : EarthyBlue 
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20140215
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <title>Wild Fire</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900|Quicksand:400,700|Questrial" rel="stylesheet" />
+<link href="default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
    
   <link rel="stylesheet" href="./Leaflet-1.0.3/leaflet.css"/>
   <script src="./Leaflet-1.0.3/leaflet.js"></script>
   <script src="./Leaflet.heat-gh-pages/dist/leaflet-heat.js"></script> 
-   <img src= "logo2.png" width="200" height="81">
+
+<!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
   <style>
     #aerismap{ 
         height: 800px;
-        width: 1000px;}
-  </style>
-<p>
-    WildFire, a predictive wildfire based service using data analysis of fire data from the last 20 years 
-</p>
-    
-    
-    <style>
-div.fixed {
-  position: fixed;
-  top: 40;
-  left: 1050;
-  width: 600px;
-  height: 900px;
-  border: 3px solid #73AD21;
-}
-        
-        
-.slidecontainer {
-  width: 100%;
+        width: 100%;}
+      
+      .slidecontainer {
+  width: 100%; /* Width of the outside container */
 }
 
+/* The slider itself */
 .slider {
-  -webkit-appearance: none;
-  width: 99%;
-  height: 25px;
-  background: #d3d3d3;
-  outline: none;
-  opacity: 0.7;
-  -webkit-transition: .2s;
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 25px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
   transition: opacity .2s;
 }
 
+/* Mouse-over effects */
 .slider:hover {
-  opacity: 1;
+  opacity: 1; /* Fully shown on mouse-over */
 }
 
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
 .slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
+  -webkit-appearance: none; /* Override default look */
   appearance: none;
-  width: 25px;
-  height: 25px;
-  background: #4CAF50;
-  cursor: pointer;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
 }
 
 .slider::-moz-range-thumb {
-  width: 25px;
-  height: 25px;
-  background: #4CAF50;
-  cursor: pointer;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
 }
-</style>
-    
-    
+
+  </style>
 </head>
-<body bgcolor = "#595c5e">
-<div class="fixed">
-<b>Data Manipulation</b>
-    <p><center>Specific year data (2000-2019, 2019 is current)</center></p>
-  <input type="range" min="2000" max="2019" value="2019" class="slider" id="myRange">
+<body>
+<div id="header-wrapper">
+	<div id="header" class="container">
+		<div id="logo">
+			<h1><a href="#">  <img src= "logo2.png" width="740" height="300"></a></h1>
+			<!--
+			<div id="menu">
+				<ul>
+					<li class="active"><a href="#" accesskey="1" title="">Homepage</a></li>
+					<li><a href="#" accesskey="2" title="">Our Clients</a></li>
+					<li><a href="#" accesskey="3" title="">About Us</a></li>
+					<li><a href="#" accesskey="4" title="">Careers</a></li>
+					<li><a href="#" accesskey="5" title="">Contact Us</a></li>
+				</ul>
+			</div>
+			-->
+		</div>
+	</div>
+</div>
+<div id="page-wrapper">
+	<div id="welcome" class="container">
+
+		<p><b>Wildfire is a wildfire prediction service that finds high risk areas based off a prediction model from previous wildfires collected by the NASA modiis 6 satltelittle and local weather station data</b></p>
+		<div id="aerismap" class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0" style="position: relative; outline: none;"><div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(4px, 0px, 0px);"><div class="leaflet-pane leaflet-tile-pane"><div class="leaflet-layer " style="z-index: 1; opacity: 1;"><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 18; transform: translate3d(0px, 0px, 0px) scale(1);"><img alt="" role="presentation" src="https://a.tile.openstreetmap.org/7/21/48.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(439px, 44px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://b.tile.openstreetmap.org/7/21/49.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(439px, 300px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.openstreetmap.org/7/20/48.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(183px, 44px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://b.tile.openstreetmap.org/7/22/48.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(695px, 44px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://a.tile.openstreetmap.org/7/20/49.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(183px, 300px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.openstreetmap.org/7/22/49.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(695px, 300px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.openstreetmap.org/7/21/47.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(439px, -212px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.openstreetmap.org/7/21/50.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(439px, 556px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://b.tile.openstreetmap.org/7/20/47.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(183px, -212px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://a.tile.openstreetmap.org/7/22/47.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(695px, -212px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://b.tile.openstreetmap.org/7/20/50.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(183px, 556px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://a.tile.openstreetmap.org/7/22/50.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(695px, 556px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://b.tile.openstreetmap.org/7/19/48.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-73px, 44px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.openstreetmap.org/7/23/48.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(951px, 44px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.openstreetmap.org/7/19/49.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-73px, 300px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://a.tile.openstreetmap.org/7/23/49.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(951px, 300px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://a.tile.openstreetmap.org/7/19/47.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-73px, -212px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://b.tile.openstreetmap.org/7/23/47.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(951px, -212px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://a.tile.openstreetmap.org/7/19/50.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-73px, 556px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://b.tile.openstreetmap.org/7/23/50.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(951px, 556px, 0px); opacity: 1;"></div></div></div><div class="leaflet-pane leaflet-shadow-pane"></div><div class="leaflet-pane leaflet-overlay-pane"><canvas class="leaflet-heatmap-layer leaflet-layer leaflet-zoom-animated" width="1000" height="800" style="transform-origin: 50% 50%; transform: translate3d(-4px, 0px, 0px);"></canvas></div><div class="leaflet-pane leaflet-marker-pane"><img src="tower.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -15px; margin-top: -20px; width: 30px; height: 40px; transform: translate3d(693px, 866px, 0px); z-index: 866;"><img src="tower.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -15px; margin-top: -20px; width: 30px; height: 40px; transform: translate3d(610px, 687px, 0px); z-index: 687;"><img src="tower.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -15px; margin-top: -20px; width: 30px; height: 40px; transform: translate3d(674px, 468px, 0px); z-index: 468;"><img src="tower.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -15px; margin-top: -20px; width: 30px; height: 40px; transform: translate3d(671px, 853px, 0px); z-index: 853;"><img src="tower.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -15px; margin-top: -20px; width: 30px; height: 40px; transform: translate3d(781px, 984px, 0px); z-index: 984;"><img src="tower.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -15px; margin-top: -20px; width: 30px; height: 40px; transform: translate3d(388px, 337px, 0px); z-index: 337;"><img src="tower.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -15px; margin-top: -20px; width: 30px; height: 40px; transform: translate3d(378px, 549px, 0px); z-index: 549;"><img src="tower.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -15px; margin-top: -20px; width: 30px; height: 40px; transform: translate3d(413px, 408px, 0px); z-index: 408;"><img src="tower.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -15px; margin-top: -20px; width: 30px; height: 40px; transform: translate3d(337px, 397px, 0px); z-index: 397;"><img src="tower.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -15px; margin-top: -20px; width: 30px; height: 40px; transform: translate3d(484px, 747px, 0px); z-index: 747;"><img src="tower.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -15px; margin-top: -20px; width: 30px; height: 40px; transform: translate3d(146px, 64px, 0px); z-index: 64;"><img src="tower.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -15px; margin-top: -20px; width: 30px; height: 40px; transform: translate3d(319px, 143px, 0px); z-index: 143;"><img src="tower.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -15px; margin-top: -20px; width: 30px; height: 40px; transform: translate3d(315px, 100px, 0px); z-index: 100;"><img src="tower.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -15px; margin-top: -20px; width: 30px; height: 40px; transform: translate3d(550px, 535px, 0px); z-index: 535;"><img src="tower.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -15px; margin-top: -20px; width: 30px; height: 40px; transform: translate3d(332px, 435px, 0px); z-index: 435;"></div><div class="leaflet-pane leaflet-tooltip-pane"></div><div class="leaflet-pane leaflet-popup-pane"></div><div class="leaflet-proxy leaflet-zoom-animated" style="transform: translate3d(5433px, 12644px, 0px) scale(64);"></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="#" title="Zoom in" role="button" aria-label="Zoom in">+</a><a class="leaflet-control-zoom-out" href="#" title="Zoom out" role="button" aria-label="Zoom out">−</a></div></div><div class="leaflet-top leaflet-right"></div><div class="leaflet-bottom leaflet-left"></div><div class="leaflet-bottom leaflet-right"><div class="leaflet-control-attribution leaflet-control"></div></div></div></div>
+	</div>
+</div>
+<div class="wrapper">
+	<div id="three-column" class="container">
+		<div><span class="arrow-down"></span></div>
+		<div id="tbox1">
+                   <p><c>Year</c></p>
+			<div class="slidecontainer">
+                <input type="range" min="2010" max="2019" value="50" class="slider" id="myRange">
+                <p>Current Year: <span id="demo"></span></p>
+
+            </div>
+            <script>
+                var slider = document.getElementById("myRange");
+                var output = document.getElementById("demo");
+                output.innerHTML = slider.value; // Display the default slider value
+
+                // Update the current slider value (each time you drag the slider handle)
+                slider.oninput = function() {
+                    output.innerHTML = this.value;
+                }
+
+            </script>
+             </div>
+        
+		<div id="tbox2">
+                <p><c>Confidence</c></p>
+			<div class="slidecontainer">
+                <input type="range" min="1" max="100" value="50" class="slider" id="myRange1">
+                <p>Value: <span id="demo1"></span>%</p>
+
+            </div>
+            <script>
+                var slider1 = document.getElementById("myRange1");
+                var output1 = document.getElementById("demo1");
+                output1.innerHTML = slider1.value; // Display the default slider value
+
+                // Update the current slider value (each time you drag the slider handle)
+                slider1.oninput = function() {
+                    output1.innerHTML = this.value;
+            }
+
+            </script>
+             </div>
+        
+		<div id="tbox3">
+                    <p><c>Month</c></p>
+			<div class="slidecontainer">
+                <input type="range" min="1" max="5" value="5" class="slider" id="myRange2">
+                <p>Season: <span id="demo2"></span></p>
+
+            </div>
+            <script>
+                var slider2 = document.getElementById("myRange2");
+                var output2 = document.getElementById("demo2");
+                output2.innerHTML = 'All Seasons' // Display the default slider value
+
+                // Update the current slider value (each time you drag the slider handle)
+                slider2.oninput = function() {
+                    //output2.innerHTML = this.value;
+                    if(this.value == 1){
+                        output2.innerHTML = 'Spring';
+                        updateLayer(1,3,2018,2018,1)
+                        
+                    }
+                    if(this.value == 2){
+                        output2.innerHTML = 'Summer';
+                        updateLayer(4,7,2018,2018,1)
+                    }
+                    if(this.value == 3){
+                        output2.innerHTML = 'Fall';
+                        updateLayer(8,10,2018,2018,1)
+                    }
+                    if(this.value == 4){
+                        output2.innerHTML = 'Winter';
+                        updateLayer(11,12,2018,2018,1)
+
+                    }
+                    if(this.value == 5){
+                        output2.innerHTML = 'All Seasons';
+                        updateLayer(1,12,2018,2018,1)
+
+                    }
+                }
+
+            </script>
+             </div>
+	</div>
     
-     <p><center>Confidence threshold (20%-80%)</center></p>
-  <input type="range" min="20" max="80" value="70" class="slider" id="myRange">
+    
+	<div id="portfolio" class="container">
+		<div class="column1">
+			<div class="box"> <a href="#"><img src="images/scr01.jpg" alt="" class="image image-full" /></a>
+				<h3>Vestibulum venenatis</h3>
+				<p>Fermentum nibh augue praesent a lacus at urna congue rutrum.</p>
+				<a href="#" class="button button-small">Etiam posuere</a> </div>
+		</div>
+		<div class="column2">
+			<div class="box"> <a href="#"><img src="images/scr02.jpg" alt="" class="image image-full" /></a>
+				<h3>Praesent scelerisque</h3>
+				<p>Vivamus fermentum nibh in augue praesent urna congue rutrum.</p>
+				<a href="#" class="button button-small">Etiam posuere</a> </div>
+		</div>
+		<div class="column3">
+			<div class="box"> <a href="#"><img src="images/scr03.jpg" alt="" class="image image-full" /></a>
+				<h3>Donec dictum metus</h3>
+				<p>Vivamus fermentum nibh in augue praesent urna congue rutrum.</p>
+				<a href="#" class="button button-small">Etiam posuere</a> </div>
+		</div>
+		<div class="column4">
+			<div class="box"> <a href="#"><img src="images/scr04.jpg" alt="" class="image image-full" /></a>
+				<h3>Mauris vulputate dolor</h3>
+				<p>Rutrum fermentum nibh in augue praesent urna congue rutrum.</p>
+				<a href="#" class="button button-small">Etiam posuere</a> </div>
+		</div>
+	</div>
+</div>
+<div id="copyright" class="container">
+	<p>&copy; All rights reserved. | Design by <a href="http://templated.co" rel="nofollow">Kyle, Ryan, Eric</a>.</p>
+		<ul class="contact">
+			<li><a href="https://us-south.git.cloud.ibm.com/keckrich/WildFireFlask/tree/master" class="icon icon-github"><span>GitHub</span></a></li>
+		
+		</ul>
 </div>
 
-  <div id="aerismap"></div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script>
-  
+    
+
+<script>
+var heat; 
+function updateLayer(start_month, end_month, start_year, end_year, predicted){
+    
+    heat.remove();
+    
+	var request = new XMLHttpRequest()
+	request.open('GET', '/api/'+start_month+'/'+end_month+'/'+start_year+'/'+end_year+'/'+predicted, true)
+	request.onload = function() {
+		// Begin accessing JSON data here
+		var addressPoints = JSON.parse(this.response)
+		//console.log(data)
+		 heat = L.heatLayer(addressPoints, {radius: 8}).addTo(map);
+	}
+	request.send()
+    
+}
+    
+    
+    
 	var start_month = 1;
 	var end_month = 12;
 	var start_year = 2017;
@@ -91,7 +256,7 @@ div.fixed {
 		// Begin accessing JSON data here
 		var addressPoints = JSON.parse(this.response)
 		//console.log(data)
-		var heat = L.heatLayer(addressPoints, {radius: 8}).addTo(map);
+		 heat = L.heatLayer(addressPoints, {radius: 8}).addTo(map);
 	}
 	request.send()
 

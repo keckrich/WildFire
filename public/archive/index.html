@@ -1,0 +1,139 @@
+<html>
+<head>
+  <title>Wild Fire</title>
+   
+  <link rel="stylesheet" href="./Leaflet-1.0.3/leaflet.css"/>
+  <script src="./Leaflet-1.0.3/leaflet.js"></script>
+  <script src="./Leaflet.heat-gh-pages/dist/leaflet-heat.js"></script> 
+   <img src= "logo2.png" width="200" height="81">
+  <style>
+    #aerismap{ 
+        height: 800px;
+        width: 1000px;}
+  </style>
+<p>
+    WildFire, a predictive wildfire based service using data analysis of fire data from the last 20 years 
+</p>
+    
+    
+    <style>
+div.fixed {
+  position: fixed;
+  top: 40;
+  left: 1050;
+  width: 600px;
+  height: 900px;
+  border: 3px solid #73AD21;
+}
+        
+        
+.slidecontainer {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 99%;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #4CAF50;
+  cursor: pointer;
+}
+</style>
+    
+    
+</head>
+<body bgcolor = "#595c5e">
+<div class="fixed">
+<b>Data Manipulation</b>
+    <p><center>Specific year data (2000-2019, 2019 is current)</center></p>
+  <input type="range" min="2000" max="2019" value="2019" class="slider" id="myRange">
+    
+     <p><center>Confidence threshold (20%-80%)</center></p>
+  <input type="range" min="20" max="80" value="70" class="slider" id="myRange">
+</div>
+
+  <div id="aerismap"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+  
+	var start_month = 1;
+	var end_month = 12;
+	var start_year = 2017;
+	var end_year = 2018;
+	var predicted = 1;
+  
+	var request = new XMLHttpRequest()
+	request.open('GET', '/api/'+start_month+'/'+end_month+'/'+start_year+'/'+end_year+'/'+predicted, true)
+	request.onload = function() {
+		// Begin accessing JSON data here
+		var addressPoints = JSON.parse(this.response)
+		//console.log(data)
+		var heat = L.heatLayer(addressPoints, {radius: 8}).addTo(map);
+	}
+	request.send()
+
+      
+ var map = L.map('aerismap').setView([37.96, -120.27], 7);
+
+ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map);
+      
+	  
+	  
+		/*var i;
+		for(i = 0; i < addressPoints.length; i++)
+		{
+		L.marker(addressPoints[i].slice(0,2))
+		.addTo(map)
+		.bindPopup('1')
+		}*/
+	  
+var stationIcon = L.icon({
+      iconUrl: 'tower.png',
+      iconSize: [30,40]
+    });  
+      L.marker([33.8116, -118.1463],{icon: stationIcon}).addTo(map).bindPopup('LONG BEACH DAUGHERTY AIRPORT, CA US')
+      L.marker([35.4344,-119.0542 ],{icon: stationIcon}).addTo(map).bindPopup('BAKERSFIELD AIRPORT, CA US')
+      L.marker([37.3711,-118.358],{icon: stationIcon}).addTo(map).bindPopup('BISHOP AIRPORT, CA US')
+      L.marker([33.938,-118.3888 ],{icon: stationIcon}).addTo(map).bindPopup('LOS ANGELES INTERNATIONAL AIRPORT, CA US')
+      L.marker([32.7336,-117.1831],{icon: stationIcon}).addTo(map).bindPopup('SAN DIEGO INTERNATIONAL AIRPORT, CA US')
+      L.marker([38.5069,-121.495],{icon: stationIcon}).addTo(map).bindPopup('SACRAMENTO EXECUTIVE AIRPORT, CA US')
+      L.marker([36.6636,-121.6081],{icon: stationIcon}).addTo(map).bindPopup('SALINAS AIRPORT, CA US')
+      L.marker([37.8891,-121.2258],{icon: stationIcon}).addTo(map).bindPopup('STOCKTON METROPOLITAN AIRPORT, CA US')
+      L.marker([37.9917,-122.055],{icon: stationIcon}).addTo(map).bindPopup('CONCORD BUCHANAN FIELD, CA US')
+      L.marker([34.8994,-120.4486],{icon: stationIcon}).addTo(map).bindPopup('SANTA MARIA PUBLIC AIRPORT, CA US')
+      L.marker([40.8097,-124.1602],{icon: stationIcon}).addTo(map).bindPopup('EUREKA WEATHER FORECAST OFFICE WOODLEY ISLAND, CA US')
+      L.marker([40.1519,-122.2536],{icon: stationIcon}).addTo(map).bindPopup('RED BLUFF MUNICIPAL AIRPORT, CA US')           
+      L.marker([40.5175,-122.2986],{icon: stationIcon}).addTo(map).bindPopup('REDDING MUNICIPAL AIRPORT, CA US')
+      L.marker([36.78,-119.7194],{icon: stationIcon}).addTo(map).bindPopup('FRESNO YOSEMITE INTERNATIONAL, CA US')
+      L.marker([37.6542,-122.115],{icon: stationIcon}).addTo(map).bindPopup('HAYWARD AIR TERMINAL, CA US')
+
+      
+
+  </script>
+</body>
+</html>

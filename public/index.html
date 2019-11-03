@@ -103,7 +103,7 @@ Released   : 20140215
 		<div id="tbox1">
                    <p><c>Year</c></p>
 			<div class="slidecontainer">
-                <input type="range" min="2010" max="2019" value="50" class="slider" id="myRange">
+                <input type="range" min="2017" max="2019" value="2017" class="slider" id="myRange">
                 <p>Current Year: <span id="demo"></span></p>
 
             </div>
@@ -115,6 +115,21 @@ Released   : 20140215
                 // Update the current slider value (each time you drag the slider handle)
                 slider.oninput = function() {
                     output.innerHTML = this.value;
+
+                    if (this.value == 2017) {
+                      start_year = 2017;
+                      end_year = 2017;
+                    } 
+                    else if (this.value == 2018) {
+                      start_year = 2018
+                      end_year = 2018;
+                    }
+                    else {
+                      start_year = 2017;
+                      end_year = 2018;
+                      output.innerHTML = 'Both';
+                    }
+                    updateLayer();
                 }
 
             </script>
@@ -135,6 +150,8 @@ Released   : 20140215
                 // Update the current slider value (each time you drag the slider handle)
                 slider1.oninput = function() {
                     output1.innerHTML = this.value;
+                    predicted = this.value
+                    updateLayer();
             }
 
             </script>
@@ -157,82 +174,59 @@ Released   : 20140215
                     //output2.innerHTML = this.value;
                     if(this.value == 1){
                         output2.innerHTML = 'Spring';
-                        updateLayer(1,3,2018,2018,1)
-                        
+                        start_month = 1;
+                        end_month = 3; 
                     }
                     if(this.value == 2){
                         output2.innerHTML = 'Summer';
-                        updateLayer(4,7,2018,2018,1)
+                        start_month = 4;
+                        end_month = 7;
                     }
                     if(this.value == 3){
                         output2.innerHTML = 'Fall';
-                        updateLayer(8,10,2018,2018,1)
+                        start_month = 8;
+                        end_month = 10;
                     }
                     if(this.value == 4){
                         output2.innerHTML = 'Winter';
-                        updateLayer(11,12,2018,2018,1)
+                        start_month = 11;
+                        end_month = 12;
 
                     }
                     if(this.value == 5){
                         output2.innerHTML = 'All Seasons';
-                        updateLayer(1,12,2018,2018,1)
+                        start_month = 1;
+                        end_month = 12;
 
                     }
+                    
+                    updateLayer();
                 }
 
             </script>
              </div>
 	</div>
     
-    
-	<div id="portfolio" class="container">
-		<div class="column1">
-			<div class="box"> <a href="#"><img src="images/scr01.jpg" alt="" class="image image-full" /></a>
-				<h3>Vestibulum venenatis</h3>
-				<p>Fermentum nibh augue praesent a lacus at urna congue rutrum.</p>
-				<a href="#" class="button button-small">Etiam posuere</a> </div>
-		</div>
-		<div class="column2">
-			<div class="box"> <a href="#"><img src="images/scr02.jpg" alt="" class="image image-full" /></a>
-				<h3>Praesent scelerisque</h3>
-				<p>Vivamus fermentum nibh in augue praesent urna congue rutrum.</p>
-				<a href="#" class="button button-small">Etiam posuere</a> </div>
-		</div>
-		<div class="column3">
-			<div class="box"> <a href="#"><img src="images/scr03.jpg" alt="" class="image image-full" /></a>
-				<h3>Donec dictum metus</h3>
-				<p>Vivamus fermentum nibh in augue praesent urna congue rutrum.</p>
-				<a href="#" class="button button-small">Etiam posuere</a> </div>
-		</div>
-		<div class="column4">
-			<div class="box"> <a href="#"><img src="images/scr04.jpg" alt="" class="image image-full" /></a>
-				<h3>Mauris vulputate dolor</h3>
-				<p>Rutrum fermentum nibh in augue praesent urna congue rutrum.</p>
-				<a href="#" class="button button-small">Etiam posuere</a> </div>
-		</div>
-	</div>
-</div>
-<div id="copyright" class="container">
-	<p>&copy; All rights reserved. | Design by <a href="http://templated.co" rel="nofollow">Kyle, Ryan, Eric</a>.</p>
-		<ul class="contact">
-			<li><a href="https://us-south.git.cloud.ibm.com/keckrich/WildFireFlask/tree/master" class="icon icon-github"><span>GitHub</span></a></li>
-		
-		</ul>
-</div>
-
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     
 
 <script>
 var heat; 
-function updateLayer(start_month, end_month, start_year, end_year, predicted){
     
-    heat.remove();
     
+var start_month = 1;
+var end_month = 12;
+var start_year = 2017;
+var end_year = 2017;
+var predicted = 50;
+
+function updateLayer(){
+      
 	var request = new XMLHttpRequest()
 	request.open('GET', '/api/'+start_month+'/'+end_month+'/'+start_year+'/'+end_year+'/'+predicted, true)
 	request.onload = function() {
+    heat.remove();
 		// Begin accessing JSON data here
 		var addressPoints = JSON.parse(this.response)
 		//console.log(data)
@@ -242,16 +236,9 @@ function updateLayer(start_month, end_month, start_year, end_year, predicted){
     
 }
     
-    
-    
-	var start_month = 1;
-	var end_month = 12;
-	var start_year = 2017;
-	var end_year = 2018;
-	var predicted = 1;
-  
-	var request = new XMLHttpRequest()
-	request.open('GET', '/api/'+start_month+'/'+end_month+'/'+start_year+'/'+end_year+'/'+predicted, true)
+window.onload = function() {
+  var request = new XMLHttpRequest()
+	request.open('GET', '/api/1/12/2017/2017/50', true)
 	request.onload = function() {
 		// Begin accessing JSON data here
 		var addressPoints = JSON.parse(this.response)
@@ -259,6 +246,7 @@ function updateLayer(start_month, end_month, start_year, end_year, predicted){
 		 heat = L.heatLayer(addressPoints, {radius: 8}).addTo(map);
 	}
 	request.send()
+};
 
       
  var map = L.map('aerismap').setView([37.96, -120.27], 7);

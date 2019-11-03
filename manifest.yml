@@ -1,11 +1,11 @@
 ---
 applications:
-- instances: 1
+- instances: 2
   timeout: 180
   name: WildFire
   buildpack: python_buildpack
   command: python manage.py run 0.0.0.0:$PORT
-  memory: 256MB
+  memory: 512MB
   domain: mybluemix.net
   host: wildfire-cd12
   env:

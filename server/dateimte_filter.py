@@ -4,7 +4,7 @@ import datetime
 
 
 def get_data(startmonth, endmonth, startyear, endyear, confidence):
-    csv = pd.read_csv("predict_subset.csv")
+    csv = pd.read_csv("server/predict_subset.csv")
 
     csv['acq_date'] = pd.to_datetime(csv['acq_date'])
 

@@ -78,33 +78,22 @@ div.fixed {
   <div id="aerismap"></div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script>
-var request = new XMLHttpRequest()
-
-
-
-request.open('GET', '/api', true)
-request.onload = function() {
-	
-
-  // Begin accessing JSON data here
-  var data = JSON.parse(this.response)
-  console.log(data)
   
+	var start_month = 1;
+	var end_month = 12;
+	var start_year = 2017;
+	var end_year = 2018;
+	var predicted = 1;
   
-  var addressPoints2 = data
-//var heat = L.heatLayer(addressPoints2).addTo(map);
-var heat = L.heatLayer(addressPoints2, {radius: 8}).addTo(map);
-      /*var i;
-      for(i = 0; i < addressPoints2.length; i++)
-          {
-            L.marker(addressPoints2[i].slice(0,2))
-                .addTo(map)
-                .bindPopup('1')
-          }*/
-    
-}
-
-request.send()
+	var request = new XMLHttpRequest()
+	request.open('GET', '/api/'+start_month+'/'+end_month+'/'+start_year+'/'+end_year+'/'+predicted, true)
+	request.onload = function() {
+		// Begin accessing JSON data here
+		var addressPoints = JSON.parse(this.response)
+		//console.log(data)
+		var heat = L.heatLayer(addressPoints, {radius: 8}).addTo(map);
+	}
+	request.send()
 
       
  var map = L.map('aerismap').setView([37.96, -120.27], 7);
@@ -113,6 +102,16 @@ request.send()
     attribution: '&copy; OpenStreetMap contributors'
 }).addTo(map);
       
+	  
+	  
+		/*var i;
+		for(i = 0; i < addressPoints.length; i++)
+		{
+		L.marker(addressPoints[i].slice(0,2))
+		.addTo(map)
+		.bindPopup('1')
+		}*/
+	  
 var stationIcon = L.icon({
       iconUrl: 'tower.png',
       iconSize: [30,40]

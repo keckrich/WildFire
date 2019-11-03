@@ -129,6 +129,7 @@ Released   : 20140215
                       end_year = 2018;
                       output.innerHTML = 'Both';
                     }
+                    global_year = this.value;
                     updateLayer();
                 }
 
@@ -197,8 +198,10 @@ Released   : 20140215
                         output2.innerHTML = 'All Seasons';
                         start_month = 1;
                         end_month = 12;
-
                     }
+                    global_month = this.value;
+                    
+
                     
                     updateLayer();
                 }
@@ -220,8 +223,21 @@ var end_month = 12;
 var start_year = 2017;
 var end_year = 2017;
 var predicted = 50;
+var global_year = 2017;
+var global_month = 5;
 
 function updateLayer(){
+
+  if (global_year == 2019 && global_month != 5) {
+    
+      //end_year = 2017;
+      addLayer();
+      //start_year = 2018;
+      //end_year = 2018;
+      //addLayer();
+      return;
+                      
+  }
       
 	var request = new XMLHttpRequest()
 	request.open('GET', '/api/'+start_month+'/'+end_month+'/'+start_year+'/'+end_year+'/'+predicted, true)
@@ -234,6 +250,38 @@ function updateLayer(){
 	}
 	request.send()
     
+}
+
+function addLayer() {
+
+
+  start_year = 2017;
+  end_year = 2017;
+  var addressPoints
+	var request = new XMLHttpRequest()
+	request.open('GET', '/api/'+start_month+'/'+end_month+'/'+start_year+'/'+end_year+'/'+predicted, true)
+	request.onload = function() {
+		// Begin accessing JSON data here
+		 addressPoints = JSON.parse(this.response)
+
+	}
+ request.send()
+  start_year = 2018;
+  end_year = 2018;
+
+  var request2 = new XMLHttpRequest()
+	request2.open('GET', '/api/'+start_month+'/'+end_month+'/'+start_year+'/'+end_year+'/'+predicted, true)
+	request2.onload = function() {
+		// Begin accessing JSON data here
+		var addressPoints2 = JSON.parse(this.response)
+    var bothAddressPoints = addressPoints.concat(addressPoints2);
+		//console.log(data)
+    heat.remove();
+		 heat = L.heatLayer(bothAddressPoints, {radius: 8}).addTo(map);
+	}
+	request2.send()
+  start_year = 2017;
+
 }
     
 window.onload = function() {

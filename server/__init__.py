@@ -11,10 +11,7 @@ app = Flask(__name__, template_folder='../public',static_folder='../public', sta
 from server.routes import *
 from server.services import *
 
-name = []
-for i in range(100):
-    name.append([uniform(33, 40), uniform(-121, -115), str(randrange(200, 2000))])
-
+GLOBAL_CSV = pd.read_csv("server/predict_subset.csv")
 
 @app.route('/test')
 def test():
@@ -23,7 +20,7 @@ def test():
 
 @app.route('/api/<startmonth>/<endmonth>/<startyear>/<endyear>/<confidence>')
 def api(startmonth, endmonth, startyear, endyear, confidence):
-    print (startmonth, endmonth, startyear, endyear, confidence)
+    #print (startmonth, endmonth, startyear, endyear, confidence)
     result = get_data(int(startmonth), int(endmonth), int(startyear), int(endyear), int(confidence))
     return jsonify(result)
 
@@ -34,7 +31,7 @@ def gpd():
 
 
 def get_data(startmonth, endmonth, startyear, endyear, confidence):
-    csv = pd.read_csv("server/predict_subset.csv")
+    csv = GLOBAL_CSV
 
     csv['acq_date'] = pd.to_datetime(csv['acq_date'])
 
